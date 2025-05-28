@@ -41,8 +41,9 @@ class DetectionResponse(BaseModel):
 
 # Model loading with error handling
 try:
-    # Load the model directly - we can see best.pt exists in the current directory
-    model = YOLO("best.pt")
+    # Use absolute path for best.pt relative to this script
+    model_path = os.path.join(os.path.dirname(__file__), "best.pt")
+    model = YOLO(model_path)
 except Exception as e:
     print(f"Error loading model: {e}", file=sys.stderr)
     model = None
@@ -103,18 +104,14 @@ async def global_exception_handler(request, exc):
 
 if __name__ == "__main__":
     import uvicorn
-    
 
-    is_render = os.getenv('RENDER') == 'true'
-    
+    host = "0.0.0.0"
+    port = int(os.environ.get("PORT", 8000))
 
-    host = "0.0.0.0" if is_render else "127.0.0.1"
-    port = PORT if is_render else 8000
-    
     print(f"Starting server on {host}:{port}")
     uvicorn.run(
         "main:app",
         host=host,
         port=port,
-        reload=not is_render
+        reload=False
     )
