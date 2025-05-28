@@ -39,12 +39,10 @@ class Detection(BaseModel):
 class DetectionResponse(BaseModel):
     detections: List[Detection]
 
+# Model loading with error handling
 try:
-    model_path = "best.pt"
-    if not os.path.exists(model_path):
-        raise FileNotFoundError(f"Model file not found at {model_path}")
-    
-    model = YOLO(model_path)
+    # Load the model directly - we can see best.pt exists in the current directory
+    model = YOLO("best.pt")
 except Exception as e:
     print(f"Error loading model: {e}", file=sys.stderr)
     model = None
