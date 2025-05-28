@@ -74,13 +74,13 @@ The model was trained on manually labeled architectural blueprints using YOLOv8.
 
 Example loss graph and console output from training:
 
-![Loss Graph](screenshots/Screenshot%202025-05-28%20204637.png)
+![results](https://github.com/user-attachments/assets/a7a381ee-01de-475f-b1fd-5b6a0bacf469)
 
 ## Labeling Screenshots
 
 Labeling with LabelImg and sample annotation files:
 
-![LabelImg Example](screenshots/Screenshot%202025-05-28%20204614.png)
+![Screenshot 2025-05-28 174326](https://github.com/user-attachments/assets/b1d25240-94ba-422e-a1dc-dff687f2f371)
 
 ### Sample Label Files
 
