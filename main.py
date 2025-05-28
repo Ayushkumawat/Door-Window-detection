@@ -42,7 +42,7 @@ class DetectionResponse(BaseModel):
 # Model loading with error handling
 try:
     # Get the absolute path to the model file
-    model_path = Path(__file__).parent / "runs/detect/train/weights/best.pt"
+    model_path = Path(__file__).parent / "best.pt"
     if not model_path.exists():
         raise FileNotFoundError(f"Model file not found at {model_path}")
     
