@@ -74,6 +74,8 @@ The model was trained on manually labeled architectural blueprints using YOLOv8.
 
 Example loss graph and console output from training:
 
+![Screenshot 2025-05-28 204637](https://github.com/user-attachments/assets/33e25685-3403-4bcf-b737-446599922c5f)
+
 ![results](https://github.com/user-attachments/assets/a7a381ee-01de-475f-b1fd-5b6a0bacf469)
 
 ## Labeling Screenshots
