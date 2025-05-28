@@ -13,9 +13,6 @@ import sys
 from pathlib import Path
 
 
-PORT = int(os.getenv("PORT", 10000))
-
-
 app = FastAPI(
     title="Door and Window Detection API",
     description="API for detecting doors and windows in architectural blueprints using YOLOv8",
@@ -39,9 +36,8 @@ class Detection(BaseModel):
 class DetectionResponse(BaseModel):
     detections: List[Detection]
 
-# Model loading with error handling
+
 try:
-    # Use absolute path for best.pt relative to this script
     model_path = os.path.join(os.path.dirname(__file__), "best.pt")
     model = YOLO(model_path)
 except Exception as e:
@@ -99,19 +95,4 @@ async def global_exception_handler(request, exc):
     return JSONResponse(
         status_code=500,
         content={"detail": f"Internal server error: {str(exc)}"}
-    )
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    host = "0.0.0.0"
-    port = int(os.environ.get("PORT", 8000))
-
-    print(f"Starting server on {host}:{port}")
-    uvicorn.run(
-        "main:app",
-        host=host,
-        port=port,
-        reload=False
     )
